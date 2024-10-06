@@ -49,14 +49,27 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:pid', (req, res) => {
+
     const id = req.params.pid;
     const dataBody = req.body;
     const updateProduct = productManager.updateProduct( id, dataBody );
 
     if( !updateProduct ){
-        return res.status()
+        return res.status(404).send({error: "El ID no corresponde a ningun producto existente."});
     }
 
+    res.status(200).send(updateProduct);
+});
+
+router.delete('/:pid', (req, res) => {
+    const id = req.params.pid;
+    const productDeleted = productManager.deleteProduct( id );
+
+    if( !productDeleted ){
+        return res.status(404).send({ error: `No existe un producto de id: ${id}` });
+    }
+
+    res.status(200).send({ msg: "Producto eliminado correctamente", productDeleted });
 });
 
 export default router;

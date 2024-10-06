@@ -62,17 +62,35 @@ export default class ProductManager {
         return newProduct;
     }
 
-    updateProduct( id,  ){
-        const product = this.products.find( p => p.id === id);
+    updateProduct( id, updateData ){
+        const index = this.products.findIndex( p => p.id === id);
 
-        if( !product ){
+        if( index < 0 ){
             return null;
         }
 
-        const update = {
-            ...product,
-            ...
-        } 
+        this.products[index] = {
+            ...this.products[index],
+            ...updateData,
+            id: this.products[index].id
+        }
 
+        this.saveToFile();
+
+        return this.products[index];
+    }
+
+    deleteProduct( id ){
+        const index = this.products.findIndex(p => p.id === id);
+
+        if( index < 0 ){
+            return null;
+        }
+
+        const productDeleted = this.products.splice(index, 1);
+    
+        this.saveToFile();
+        
+        return productDeleted;
     }
 }

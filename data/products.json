@@ -3,8 +3,8 @@
     "title": "Headset HyperX Cloud II",
     "description": "Los auriculares gaming HyperX Cloud II han sido diseñados para ser ultracómodos y brindar un sonido increíble.",
     "code": "HEHC-2",
-    "price": 120,
-    "stock": 50,
+    "price": 220,
+    "stock": 49,
     "category": "Tecnologia Perifericos Gamer",
     "thumbnails": [
       "https://www.google.com/imgres?q=auriculares%20hyperx%20cloud%202&imgurl=https%3A%2F%2Fkatech.com.ar%2Fwp-content%2Fuploads%2Fx3-95.jpg&imgrefurl=https%3A%2F%2Fkatech.com.ar%2Fproducto%2Fauricular-hyperx-cloud-iii-wireless-negro-rojo%2F&docid=1p_IDZaRX7zWvM&tbnid=uft0UfIJfUJD4M&vet=12ahUKEwjPgvjcp_qIAxUGqpUCHSDHMZgQM3oECHkQAA..i&w=900&h=900&hcb=2&ved=2ahUKEwjPgvjcp_qIAxUGqpUCHSDHMZgQM3oECHkQAA",
@@ -12,5 +12,19 @@
     ],
     "status": true,
     "id": "0292c951-3595-4ac8-ab24-7061ff370c64"
+  },
+  {
+    "title": "Mouse Gamer Logitech G305",
+    "description": "Mouse Logitech G305, pensado para el usuario gamer.",
+    "code": "MLG-305",
+    "price": 75,
+    "stock": 150,
+    "category": "Tecnologia Perifericos Gamer",
+    "thumbnails": [
+      "https://http2.mlstatic.com/D_NQ_NP_646552-MLA31356982350_072019-O.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_924296-MLA31356989729_072019-O.webp"
+    ],
+    "status": true,
+    "id": "2ca6f23a-e8cf-47ff-9b2e-d19053805309"
   }
 ]
