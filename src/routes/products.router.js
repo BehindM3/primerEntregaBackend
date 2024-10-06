@@ -21,31 +21,41 @@ router.get('/:pid', (req, res) => {
 
     const idRequest = req.params.pid; 
 
-    const index = products.findIndex( p => p.id === idRequest );
-
-    if ( index < 0 ){
+    const product = productManager.productById(idRequest);
+    
+    if ( !product ){
 
         return res.status(404).send({ error: "Producto no encontrado"});
     }
 
-    res.status(200).send( products[index] );
+    res.status(200).send( product );
 });
 
 router.post('/', (req, res) => {
-    const newProduct = req.body;
+    const { title, description, code, price, stock, category, thumbnails } = req.body;
 
+    if( !title || !description || !code || !price || !stock || !category ){
 
-    /* 
-        title:String,
-        description:String
-        code:String
-        price:Number
-        status:Boolean
-        stock:Number
-        category:String
-        thumbnails:Array de Strings que contenga las rutas donde están almacenadas las imágenes referentes a dicho product
+        return res.status(400).send({ error: "Campos incompletos"});
+    }
 
-    */
+    const newProduct = productManager.addProduct( { title, description, code, price, stock, category, thumbnails } );
+
+    if( !newProduct ){
+        return res.status(500).send({ error: "Error al completar el registro del nuevo producto." })
+    }
+
+    res.status(200).send({status: "success", msg : "Producto agregado correctamente.", newProduct})
+});
+
+router.put('/:pid', (req, res) => {
+    const id = req.params.pid;
+    const dataBody = req.body;
+    const updateProduct = productManager.updateProduct( id, dataBody );
+
+    if( !updateProduct ){
+        return res.status()
+    }
 
 });
 

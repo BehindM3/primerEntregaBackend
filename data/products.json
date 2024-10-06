@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Headset HyperX Cloud II",
+    "description": "Los auriculares gaming HyperX Cloud II han sido diseñados para ser ultracómodos y brindar un sonido increíble.",
+    "code": "HEHC-2",
+    "price": 120,
+    "stock": 50,
+    "category": "Tecnologia Perifericos Gamer",
+    "thumbnails": [
+      "https://www.google.com/imgres?q=auriculares%20hyperx%20cloud%202&imgurl=https%3A%2F%2Fkatech.com.ar%2Fwp-content%2Fuploads%2Fx3-95.jpg&imgrefurl=https%3A%2F%2Fkatech.com.ar%2Fproducto%2Fauricular-hyperx-cloud-iii-wireless-negro-rojo%2F&docid=1p_IDZaRX7zWvM&tbnid=uft0UfIJfUJD4M&vet=12ahUKEwjPgvjcp_qIAxUGqpUCHSDHMZgQM3oECHkQAA..i&w=900&h=900&hcb=2&ved=2ahUKEwjPgvjcp_qIAxUGqpUCHSDHMZgQM3oECHkQAA",
+      "https://http2.mlstatic.com/D_NQ_NP_888876-MLA48554544372_122021-O.webp"
+    ],
+    "status": true,
+    "id": "0292c951-3595-4ac8-ab24-7061ff370c64"
+  }
+]

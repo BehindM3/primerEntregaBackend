@@ -34,13 +34,45 @@ export default class ProductManager {
     }
 
     productById( id ){
-        const index = products.findIndex(p => p.id === id);
+        const index = this.products.findIndex(p => p.id === id);
 
         if( index < 0 ){
             return null;
         }
 
-        return product[index];
+        return this.products[index];
     }
 
+    addProduct( product ){
+        
+        let newProduct = {
+            ...product,
+            status : true,
+            id : uuidv4()
+        }
+
+        try{
+
+            this.products.push(newProduct);
+            this.saveToFile();
+        }catch( err ){
+            newProduct = null;
+        }
+        
+        return newProduct;
+    }
+
+    updateProduct( id,  ){
+        const product = this.products.find( p => p.id === id);
+
+        if( !product ){
+            return null;
+        }
+
+        const update = {
+            ...product,
+            ...
+        } 
+
+    }
 }
