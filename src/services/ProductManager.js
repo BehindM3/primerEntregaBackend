@@ -35,7 +35,7 @@ export default class ProductManager {
 
     productById( id ){
         const index = this.products.findIndex(p => p.id === id);
-
+        
         if( index < 0 ){
             return null;
         }

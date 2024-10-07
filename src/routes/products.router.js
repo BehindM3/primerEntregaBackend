@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         const limit = req.query.limits ? parseInt(req.query.limits) : undefined;
         const products = productManager.getAllProducts(limit);
 
-        res.status(200).send(products);
+        res.status(200).json(products);
     }catch( err ){
         console.log( err );
     }
@@ -25,10 +25,10 @@ router.get('/:pid', (req, res) => {
     
     if ( !product ){
 
-        return res.status(404).send({ error: "Producto no encontrado"});
+        return res.status(404).json({ error: "Producto no encontrado"});
     }
 
-    res.status(200).send( product );
+    res.status(200).json( product );
 });
 
 router.post('/', (req, res) => {
@@ -36,16 +36,16 @@ router.post('/', (req, res) => {
 
     if( !title || !description || !code || !price || !stock || !category ){
 
-        return res.status(400).send({ error: "Campos incompletos"});
+        return res.status(400).json({ error: "Campos incompletos"});
     }
 
     const newProduct = productManager.addProduct( { title, description, code, price, stock, category, thumbnails } );
 
     if( !newProduct ){
-        return res.status(500).send({ error: "Error al completar el registro del nuevo producto." })
+        return res.status(500).json({ error: "Error al completar el registro del nuevo producto." })
     }
 
-    res.status(200).send({status: "success", msg : "Producto agregado correctamente.", newProduct})
+    res.status(200).json({status: "success", msg : "Producto agregado correctamente.", newProduct})
 });
 
 router.put('/:pid', (req, res) => {
@@ -55,10 +55,10 @@ router.put('/:pid', (req, res) => {
     const updateProduct = productManager.updateProduct( id, dataBody );
 
     if( !updateProduct ){
-        return res.status(404).send({error: "El ID no corresponde a ningun producto existente."});
+        return res.status(404).json({error: "El ID no corresponde a ningun producto existente."});
     }
 
-    res.status(200).send(updateProduct);
+    res.status(200).json(updateProduct);
 });
 
 router.delete('/:pid', (req, res) => {
@@ -66,10 +66,10 @@ router.delete('/:pid', (req, res) => {
     const productDeleted = productManager.deleteProduct( id );
 
     if( !productDeleted ){
-        return res.status(404).send({ error: `No existe un producto de id: ${id}` });
+        return res.status(404).json({ error: `No existe un producto de id: ${id}` });
     }
 
-    res.status(200).send({ msg: "Producto eliminado correctamente", productDeleted });
+    res.status(200).json({ msg: "Producto eliminado correctamente", productDeleted });
 });
 
 export default router;
