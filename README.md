@@ -10,7 +10,7 @@ Programa que cuenta con:
   
   Para el caso a) nos encontraremos con una lista de los productos cargados hasta ese momento, y cualquier tipo de modificacion sobre esa lista necesitara **REFRESCAR** la pagina.
   
-  Mientras que en el caso b) nos vamos a encontrar con la misma lista de productos, pero esta sera sensible ante modificaciones en la lista original de "productos" por medio de llamados a la API, como con los metodos:
+  Mientras que en el caso b) nos vamos a encontrar con la misma lista de productos, pero esta sera sensible ante modificaciones en la misma por medio de llamados a la API. Esto a traves de los metodos:
 
   
   ✍️ - **POST**, a traves de la ruta:
