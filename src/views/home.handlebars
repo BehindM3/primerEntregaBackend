@@ -1,0 +1,23 @@
+<header>
+    <nav>
+        <a href="#" class="actaul-pg">Home</a>
+        <a href="./realtimeproducts">Products RT</a>
+    </nav>
+</header>
+<main>
+    <section class="list-container">
+        {{#each products}}
+            <article class="pr-container">
+                <div class="pr-img">
+                    <img src={{this.thumbnails}}  alt="Imagen representativa del producto: {{this.title}}">
+                </div>
+                    
+                <h3 class="pr-name">{{this.title}}</h3>
+                <p>{{this.description}}</p>
+
+                <button class="pr-price">{{this.price}} $</button>
+                <span class="pr-stock">Stock: {{this.stock}}</span>
+            </article>
+        {{/each}}
+    </section>
+</main>

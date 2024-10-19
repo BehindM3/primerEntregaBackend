@@ -1,0 +1,138 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: #222;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+header{
+    height: 80px;
+    width: 100dvw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    & nav{
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 15px;
+
+        & a{
+            text-decoration: none;
+            color: #777;
+            text-transform: uppercase;
+            transition: all .3s ease;
+
+            &:hover{
+                scale: 1.1;
+                color: #fff;
+            }
+
+            &:active{
+                scale: .9;
+                color: #ffffffa1;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 2px; 
+                width: 0;
+                background-color: white;
+                transition: width 0.3s ease;
+            }
+            
+            &:hover::after {
+                width: 100%;
+            }
+            
+        }
+        
+        .actaul-pg{
+            color: #ffffffe0;
+        }
+        
+    }
+}
+
+.list-container{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    
+    .pr-container{
+        width: 250px;
+        height: 450px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        background-color: #CAC9C7;
+        border: solid .2px #858585;
+        border-radius: 22px;
+
+        .pr-img{
+            width: 210px;
+            height: 210px;
+            overflow: hidden;
+            background-color: #fff;
+            border-radius: 26px;
+            
+
+            & img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+        
+        .pr-name{
+            color: #222;
+        }
+
+        & p{
+            width: 80%;
+            max-height: 95px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #333;
+        }
+
+        .pr-price{
+            width: 50%;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #88B6F2;
+            border: none;
+            box-shadow: 0px 0px 2px 2px #DFE9F2;
+            border-radius: 100px;
+            font-size: 18px;
+            color: #fff;
+            cursor: pointer;
+
+            &:hover{
+                scale: 1.1;
+            }
+
+
+        }
+
+        .pr-stock{
+            color: #777;
+        }
+
+    }
+
+
+    
+}
