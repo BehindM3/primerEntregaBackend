@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const productsFilePath = path.resolve('data', 'products.json');
 
-export default class ProductManager {
+export default class ProductManagerFS {
 
     constructor () {
         this.products = [];
@@ -26,7 +26,7 @@ export default class ProductManager {
         fs.writeFile(productsFilePath, JSON.stringify(this.products, null, 2));
     }
 
-    getAllProducts(limit){
+    getProducts(limit){
         if( limit ){
             return this.products.slice(0, limit);
         }

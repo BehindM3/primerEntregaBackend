@@ -1,13 +1,13 @@
 import fs from 'fs/promises';
 import path from 'path';
-import ProductManager from './ProductManager.js';
+import ProductManager from './ProductManagerFS.js';
 import { v4 as uuidv4, v4 } from 'uuid';
 
 
 const cartFilePath = path.resolve('data', 'cart.json');
 const productManager = new ProductManager();
 
-export default class CartManager {
+export default class CartManagerFS {
 
     constructor (){
         this.cart = [];
@@ -82,14 +82,9 @@ export default class CartManager {
         
 
         const cartSelected = this.cart[index].products;
-
-        //console.log(cartSelected);
-        //console.log(product.id);
         
 
         let positionProduct = cartSelected.findIndex(cs => cs.product === product.id );
-        
-        //console.log(positionProduct);
         
 
         if( positionProduct < 0 ){
