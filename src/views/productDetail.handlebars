@@ -1,0 +1,26 @@
+<header>
+    <nav>
+        <a class="logo" href="./">
+            <img src="/assets/iconSite.svg" alt="Logo de la empresa">
+            <span class="titleSite">e-Tech</span>
+        </a>
+        <a class="cart" href="./cart">
+            <img src="/assets/cart.svg" alt="Icono representativo del carrito de compras">
+            <span>{{#if cantCart}}{{cantCart}}{{/if}}</span>
+        </a>
+    </nav>
+</header>
+<main>
+    <section>
+        <article>
+            <img src={{product.thumbnails}} alt="Imagen representativa de {{produc.title}}">
+        </article>
+        <article>
+            {{#each product.thumbnails}}
+                {{#if @index}}
+                    <img src="{{this}}" alt="Imagen {{@index}}" />
+                {{/if}}
+            {{/each}}
+        </article>
+    </section>
+</main>

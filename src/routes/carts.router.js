@@ -130,8 +130,10 @@ router.put('/:cid', async (req, res) => {
         const { cid } = req.params;
         const products = req.body;
 
+        console.log(products)
+
         const cart = await dbCartManager.getCartById(cid);
-            
+               
         if( !cart ){
             return res.status(404).json({ error: `El carrito con id = ${cid} no existe.`});
         }
@@ -143,9 +145,9 @@ router.put('/:cid', async (req, res) => {
             return res.status(400).json({error: "La peticion no cumple con los campos necesarios."});
         }
 
-        res.status(200).json({msg: "Productos agregados correctamente."})
+        res.status(200).json({msg: "Productos agregados correctamente.", payload: updateCart[0]})
     } catch (err) {
-        console.log("Error interno del servidor al querer agregar los productos al carrito: ", err.message );
+        console.log("Error interno del servidor al querer agregar los productos al carrito: ", err );
         return res.status(500).json({ error: "Error interno del servidor al querer agregar los productos al carrito."});
     }
 })

@@ -56,8 +56,8 @@ connectMongoDB();
 
 
 //Middlewares de los routers de la API 
-app.use('/products', productsRouter);
-app.use('/carts', cartsRouter);
+app.use('/api/products', productsRouter);
+app.use('/api/carts', cartsRouter);
 app.use('/', viewsRouter);
 
 

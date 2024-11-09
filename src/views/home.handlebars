@@ -1,7 +1,13 @@
 <header>
     <nav>
-        <a href="#" class="actaul-pg">Home</a>
-        <a href="./realtimeproducts">Products RT</a>
+        <a class="logo" href="./">
+            <img src="/assets/iconSite.svg" alt="Logo de la empresa">
+            <span class="titleSite">e-Tech</span>
+        </a>
+        <a class="cart" href="./cart">
+            <img src="/assets/cart.svg" alt="Icono representativo del carrito de compras">
+            <span>{{#if cantCart}}{{cantCart}}{{/if}}</span>
+        </a>
     </nav>
 </header>
 <main>
@@ -15,7 +21,7 @@
                 <h3 class="pr-name">{{this.title}}</h3>
                 <p>{{this.description}}</p>
 
-                <button class="pr-price">{{this.price}} $</button>
+                <a href="./product/{{this._id}}" class="pr-info">More info</a>
                 <span class="pr-stock">Stock: {{this.stock}}</span>
             </article>
         {{/each}}

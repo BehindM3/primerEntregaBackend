@@ -17,6 +17,10 @@ export default class CartManagerDB {
         const dbProductManager = new ProductManagerDB();
         const product = await dbProductManager.getProductsById(pid);
 
+        if( product.length === 0 ){
+            return null;
+        }
+
         return product;
     }
 
@@ -27,8 +31,6 @@ export default class CartManagerDB {
         if( !exist ){
             return null;  
         }
-
-        console.log(pid, this.existProduct(pid))
 
         let cart = await this.getCartById(cid);
         const index = cart.products.findIndex(p => String(p.product) === pid)
@@ -52,7 +54,9 @@ export default class CartManagerDB {
 
     async deleteProductById(pid, cid){
         
-        if( !this.existProduct(pid) ){
+        const exist = await this.existProduct(pid)
+
+        if( !exist ){
             return null;  
         }
 
@@ -65,6 +69,7 @@ export default class CartManagerDB {
         let cart = await this.getCartById(cid);
         const index = cart.products.findIndex(p => String(p.product._id) === pid)
         
+
         if( index < 0){
             return null;
         }
@@ -95,19 +100,36 @@ export default class CartManagerDB {
     }
 
     async addManyProducts( cid, obj){
-        
-        let rightProducts = await obj.products.forEach( async (p) => {
-            const pid = p.product;
-            const {cant} = p;
+
+        const rightProducts = await Promise.all(
             
-            let product = await this.addProduct(pid, cid);
+            obj.products.map( async (p) => {
+                const pid = p.product;
+                const {cant} = p;
+    
+                console.log("\n 1- ",p, pid, cant)
+
+                let product = await this.addProduct(pid, cid);
+                
+                console.log("\n 2- ", product)
+
+                if( product ){
+                    let updateProduct = await this.updateCantProducts(pid, cid, Number(cant));
+                    console.log("\n 3- ", updateProduct)
+                    return updateProduct;
+                }
+                
+                return null;
+            })
         
-            return product
-        });
+        );
 
-        console.log(rightProducts)
+        const filterProducts = rightProducts.filter(p => p !== null);
 
-        return rightProducts;
-       
+        if( filterProducts.length === 0 ){
+            return null;
+        }
+        
+        return filterProducts;
     }
 }

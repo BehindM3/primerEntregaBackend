@@ -2,7 +2,7 @@ import { productModel } from "../models/product.model.js";
 
 export default class ProductManagerDB {
 
-    async getProducts({limit, page, sort, query}){
+    async getProducts({limit = 10, page, sort, query}){
 
         limit = Number(limit) || 10;
         page = Number(page) || 1;
