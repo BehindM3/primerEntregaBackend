@@ -1,0 +1,219 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: #222;
+    font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+header{
+    height: 80px;
+    width: 100dvw;
+    background-color: #CAC9C7;
+    
+    & nav{
+        height: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-around;
+        gap: 15px;
+
+        .logo {
+            width: 200px;
+            height: 100%;
+            margin: auto;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+
+            
+            & img{
+                height: auto;
+                width: 60px;
+                aspect-ratio: 1/1;
+            }
+            
+            .titleSite {
+                color: #777;
+                text-transform: uppercase;
+                transition: all .3s ease;
+                
+                &:hover{
+                    scale: 1.1;
+                    color: #242424;
+                }
+    
+                &:active{
+                    scale: .9;
+                    color: #ffffffa1;
+                }
+    
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    height: 2px; 
+                    width: 0;
+                    background-color: #242424;
+                    transition: width 0.3s ease;
+                }
+                
+                &:hover::after {
+                    width: 100%;
+                }
+            }
+            
+        }
+        
+        .cart{
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            text-decoration: none;
+            color: #242424;
+            background-color: #eee;
+            border-radius: 999px;
+            margin-right: 25px;
+            transition: .3s ease;
+            
+            
+            & img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            &:hover{
+                scale: 1.1;
+            }
+        }
+        
+    }
+}
+
+main{
+    
+    width: 100dvw;
+    min-height: calc( 100dvh -  80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 0;
+    
+    .contProdDetail{
+        width: 80dvw;
+        min-height: 60dvh;
+        background-color: #858585;
+        border-radius: 24px;
+
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 20px;
+        padding: 20px;
+
+        .prodImgs{
+            min-height: 60dvh;
+            width: min(380px, 90%);
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: space-around;
+            gap: 10px;
+
+            .mainImg{
+                position: relative;
+                width: min(380px, 100%);
+                border-radius: 16px;
+                background-color: #fff;
+                display: grid;
+                place-items: center;
+
+                & img{
+                    height: 380px;
+                    width: min(380px, 100%);
+                    object-fit: contain ;
+                    background-color: #fff;
+                    border-radius: 16px;
+                }
+            }
+
+            .lateralImg{
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+
+                & img{
+                    height: 100px;
+                    width: 100px;
+                    object-fit: contain ;
+                    background-color: #fff;
+                    border: solid 1px #fff;
+                    border-radius: 999px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .prodInfo{
+            min-height: 40dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .title{
+                font-weight: 800;
+                font-size: 1.7em;
+            }
+
+            & p{
+                font-size: 1.1em;
+            }
+
+            & form {
+
+                & button {
+                    text-decoration: none;
+                    background-color: #fff;
+                    height: 40px;
+                    width: 210px;
+                    border: solid 1px #fff;
+                    border-radius:  999px;
+                    cursor: pointer;
+                    font-size: 1.1em;
+                    transition: all .3s ease;
+                    will-change: transform, background-color, color;
+                    
+                    &:hover{
+                        transform: scale(1.1);
+                    }
+
+                    &:active {
+                        transform: scale(.95);
+                        background-color: #8585858c;
+                        color: #fff;
+                    }
+                    
+
+                }
+
+            }
+        }
+
+    }
+
+
+}

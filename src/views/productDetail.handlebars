@@ -1,26 +1,39 @@
 <header>
     <nav>
-        <a class="logo" href="./">
+        <a class="logo" href="../">
             <img src="/assets/iconSite.svg" alt="Logo de la empresa">
             <span class="titleSite">e-Tech</span>
         </a>
-        <a class="cart" href="./cart">
+        <a class="cart" href="../cart">
             <img src="/assets/cart.svg" alt="Icono representativo del carrito de compras">
             <span>{{#if cantCart}}{{cantCart}}{{/if}}</span>
         </a>
     </nav>
 </header>
 <main>
-    <section>
-        <article>
-            <img src={{product.thumbnails}} alt="Imagen representativa de {{produc.title}}">
+    <section class="contProdDetail">
+        <article class="prodImgs">
+            <div class="mainImg">
+                <img src={{product.thumbnails}} alt="Imagen representativa de {{produc.title}}">
+            </div>
+            <div class="lateralImg">
+                {{#each product.thumbnails}}
+                    {{#if @index}}
+                        <img src="{{this}}" alt="{{@index}}° imagen representativa de {{produc.title}}" />
+                    {{/if}}
+                {{/each}}
+            </div>
         </article>
-        <article>
-            {{#each product.thumbnails}}
-                {{#if @index}}
-                    <img src="{{this}}" alt="Imagen {{@index}}" />
-                {{/if}}
-            {{/each}}
-        </article>
+        <aside class="prodInfo">
+            
+            <span class="title">{{product.title}}</span>
+            <p>{{product.description}}</p>
+            
+            <form action="/carts/{{cartId}}/product/{{product._id}}" method="POST">
+                <button type="submit">Agregar al carrito</button>
+            </form>
+        </aside>
     </section>
 </main>
+
+<script src="/js/itemDetail.js"></script>

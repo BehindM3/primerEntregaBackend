@@ -37,14 +37,14 @@ router.get('/product/:pid', async (req, res) => {
         
         res.render('productDetail', {
             siteName: product.title,
-            styleSheetName: "style",
+            styleSheetName: "productdetail",
             product,
             cantCart: 0
         });
         
     } catch (error) {
-        console.error('No pudo cargarse el producto, error: ', err);
-        res.render('404')
+        console.error('No pudo cargarse el producto, error: ', error);
+        res.render('404', { styleSheetName: 404})
     }
 })
 
