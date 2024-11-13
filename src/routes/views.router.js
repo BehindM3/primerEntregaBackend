@@ -4,21 +4,24 @@ const router = Router();
 
 router.get('/', async (req, res) => {
     try{
-        const data = await fetch("http://localhost:8080/api/products");
+        const productsURL = "http://localhost:8080/api/products";
+        const data = await fetch(productsURL);
         const dataJSON = await data.json();
         const products = dataJSON.payload;
-        const cantCart = 1;
+
 
         res.render('home', {
             siteName: "Home - Products",
             styleSheetName: "style",
-            products,
-            cantCart
+            products
         });
         
     }catch(err){
         console.error('No pudieron cargarse los productos, error: ', err);
-        res.render('404')
+        res.render('error', {
+            styleSheetName: "error",
+            numberError: "500: Internal Server Error"
+        })
     }
     
 });
@@ -38,13 +41,42 @@ router.get('/product/:pid', async (req, res) => {
         res.render('productDetail', {
             siteName: product.title,
             styleSheetName: "productdetail",
-            product,
-            cantCart: 0
+            product
         });
         
     } catch (error) {
         console.error('No pudo cargarse el producto, error: ', error);
-        res.render('404', { styleSheetName: 404})
+        res.render('error', { 
+            styleSheetName: "error",
+            numberError: "404: Product not found"
+        });
+    }
+})
+
+router.get('/cart/:cid', async (req, res) => {
+    try {
+        const { cid } = req.params;
+        const cartURL = `http://localhost:8080/api/carts/${cid}`;
+        
+        const cartData = await fetch(cartURL);
+        const cart = await cartData.json();
+
+        let products = cart.products;
+
+        console.log(products)
+
+        res.render('cart', {
+            siteName: "Cart",
+            styleSheetName: "cart",
+            products
+        });
+
+    }catch (error) {
+        console.error('No pudo cargarse el carrito, error: ', error);
+        res.render('error', { 
+            styleSheetName: "error",
+            numberError: "500: Internal Server Error"
+        })
     }
 })
 

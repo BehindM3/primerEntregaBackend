@@ -4,7 +4,7 @@
             <img src="/assets/iconSite.svg" alt="Logo de la empresa">
             <span class="titleSite">e-Tech</span>
         </a>
-        <a class="cart" href="./cart">
+        <a class="cart" id="cartBtn">
             <img src="/assets/cart.svg" alt="Icono representativo del carrito de compras">
             <span>{{#if cantCart}}{{cantCart}}{{/if}}</span>
         </a>
@@ -27,3 +27,5 @@
         {{/each}}
     </section>
 </main>
+
+<script src="/js/cart.js"></script>

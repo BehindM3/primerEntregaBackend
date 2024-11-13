@@ -4,7 +4,7 @@
             <img src="/assets/iconSite.svg" alt="Logo de la empresa">
             <span class="titleSite">e-Tech</span>
         </a>
-        <a class="cart" href="../cart">
+        <a class="cart" id="cartBtn">
             <img src="/assets/cart.svg" alt="Icono representativo del carrito de compras">
             <span>{{#if cantCart}}{{cantCart}}{{/if}}</span>
         </a>
@@ -29,11 +29,12 @@
             <span class="title">{{product.title}}</span>
             <p>{{product.description}}</p>
             
-            <form action="/carts/{{cartId}}/product/{{product._id}}" method="POST">
-                <button type="submit">Agregar al carrito</button>
+            <form id="form-addProduct" data-product-id="{{product._id}}">
+                <button type="submit" id="btn-addProduct">Add to cart</button>
             </form>
         </aside>
     </section>
 </main>
 
-<script src="/js/itemDetail.js"></script>
+<script src="/js/cart.js"></script>
+<script src="/js/addProduct.js"></script>

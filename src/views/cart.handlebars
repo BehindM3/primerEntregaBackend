@@ -1,0 +1,31 @@
+<header>
+    <nav>
+        <a class="logo" href="../">
+            <img src="/assets/iconSite.svg" alt="Logo de la empresa">
+            <span class="titleSite">e-Tech</span>
+        </a>
+        <a class="cart" href="#" id="cartBtn">
+            <img src="/assets/cart.svg" alt="Icono representativo del carrito de compras">
+            {{#if cantCart}}{{cantCart}}{{/if}}
+        </a>
+    </nav>
+</header>
+<main>
+    <section class="cnt-cart">
+        {{#each products}}
+            <article class="cnt-productCart">
+                <div class="productCart-detail">
+                    <img src={{this.product.thumbnails}} alt="Imagen representativa del producto {{this.product.title}}">
+                    <p>{{this.product.title}}</p>
+                </div>
+                <div class="productCart-info">
+                    <p>Cant: {{this.cant}}</p>
+                    <span>Price: {{this.product.price}}</span>
+                </div>
+                <button id="deleteBtnProduct" class="btnDelete" data-product-id="{{this.product._id}}">X</button>
+            </article>
+        {{/each}}
+    </section>
+</main>
+
+<script src="/js/deleteProduct.js"></script>

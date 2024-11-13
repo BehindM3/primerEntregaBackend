@@ -11,8 +11,8 @@ const dbCartManager = new CartManagerDB();
 router.post('/', async (req, res) => {
     try {
         const newCart = await dbCartManager.create();
+        res.status(201).json({status: 201, msg: "Carrito creado correctamente", payload: newCart})
 
-        res.status(201).json({status: 201, msg: "Carrito creado correctamente"})
     } catch (err) {
         console.log("Error interno del servidor al crear un nuevo carrito", err.message );
         return res.status(500).json({ error: "Error interno del servidor al crear un nuevo carrito."})
@@ -25,7 +25,7 @@ router.get('/:cid', async (req, res) => {
         const cartProduct = await dbCartManager.getCartById(cid);  
         
         if( !cartProduct ){
-            return res.status(404).json({ error: "Carrito no encontrado", msg: `No existe un carrito con id = ${cid}`});
+            return res.status(404).json({ error: "Carrito no encontrado", msg: `No existe un carrito con id = ${cid}`, payload: null });
         }
         
         res.status(200).json(cartProduct);

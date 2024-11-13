@@ -33,7 +33,7 @@ export default class CartManagerDB {
         }
 
         let cart = await this.getCartById(cid);
-        const index = cart.products.findIndex(p => String(p.product) === pid)
+        const index = cart.products.findIndex(p => String(p.product._id) === pid)
         
         if( index < 0){
             cart.products.push({product: pid});

@@ -10,11 +10,6 @@ const router = Router();
 const dbProductManager = new ProductManagerDB();
 
 
-/* function updateProductSocket (req) {
-    const { emitProductsUpdated } = socketHandler(req.app.get('socketServer'));
-    emitProductsUpdated();
-} */
-
 router.get('/', async (req, res) => {
     try{
         const products = await dbProductManager.getProducts(req.query);
@@ -54,8 +49,6 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ error: "Campos incompletos"});
         }
 
-        //updateProductSocket(req);
-
         res.status(201).json({status: "success", msg : "Producto agregado correctamente.", newProduct})
     } catch (err) {
         console.log("Error al completar el registro del nuevo producto: ", err.message);
@@ -72,8 +65,6 @@ router.put('/:pid', async(req, res) => {
         if( !matchedCount ){
             return res.status(404).json({error: "El ID no corresponde a ningun producto existente."});
         }
-
-        //updateProductSocket(req);
     
         res.status(202).json(updateProduct);
     } catch (err) {
@@ -91,8 +82,6 @@ router.delete('/:pid', async(req, res) => {
         if( !productDeleted || !deletedCount ){
             return res.status(404).json({ error: `No existe un producto de id: ${id}` });
         }
-
-        //updateProductSocket(req);
 
         res.status(200).json({ msg: "Producto eliminado correctamente", productDeleted });
 
